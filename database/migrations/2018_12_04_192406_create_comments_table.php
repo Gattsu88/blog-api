@@ -18,8 +18,8 @@ class CreateCommentsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('body');
-            $table->unsignedInteger('article_id');
-            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('article_id')->nullable();
+            $table->unsignedInteger('user_id')->nullable();
 
             $table->foreign('article_id')->references('id')->on('articles');
             $table->foreign('user_id')->references('id')->on('users');

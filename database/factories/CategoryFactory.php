@@ -5,6 +5,7 @@ use App\Category;
 
 $factory->define(App\Category::class, function (Faker $faker) {
     return [
-        'title' => $faker->word
+        'title' => $faker->word,
+        'user_id' => $faker->numberBetween(1, 5)
     ];
 });

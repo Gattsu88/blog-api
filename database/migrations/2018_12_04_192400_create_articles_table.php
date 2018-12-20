@@ -18,8 +18,8 @@ class CreateArticlesTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('body');
-            $table->unsignedInteger('category_id');
-            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('category_id')->nullable();
+            $table->unsignedInteger('user_id')->nullable();
 
             $table->foreign('category_id')->references('id')->on('categories');
             $table->foreign('user_id')->references('id')->on('users');
