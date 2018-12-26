@@ -20,7 +20,10 @@ class Article extends Model
 
     public function category()
     {
-        return $this->belongsTo('App\Category');
+        return $this->belongsTo('App\Category')->withDefault([
+            'title' => 'Uncategorised'
+        ]);
+
     }
 
     public function comments()

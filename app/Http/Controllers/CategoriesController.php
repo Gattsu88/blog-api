@@ -49,7 +49,9 @@ class CategoriesController extends Controller
      */
     public function show(Category $category)
     {
-        
+        $categories = Category::all();
+        $articles = $category->articles()->latest()->paginate(3);
+        return view('categories.show', ['articles' => $articles, 'categories' => $categories]);
     }
 
     /**

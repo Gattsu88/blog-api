@@ -1,21 +1,35 @@
 @extends('layouts.app')
 @section('content')
 
-    <div class="col-md-7">
+    <div class="col-md-7 col-lg-7">
         @include('partials._flash')
-        <a href="/articles/create" class="btn btn-success btn-block text-light">New Article</a><hr>
-        @foreach ($articles as $article)
-            <h2><a class="text-primary" href="/articles/{{ $article->id }}">{{ $article->title }}</a></h2>
-            <p class="my-0">by {{ $article->user->name }}</p>
-            <p>{{ $article->created_at->format('F j, Y') }} at {{ $article->created_at->format('H:i A') }}</p>
-            <p class="lead">
-                {{ str_limit(strip_tags($article->body), 200) }}
-                @if(strlen(strip_tags($article->body)) > 200)
-                    <br><a href="/articles/{{ $article->id }}" class="text-info">Read more >></a>
-                @endif
-            </p><hr>
+        <a href="/categories/create" class="btn btn-success btn-block text-light">New Category</a><hr>
+        @foreach ($categories as $category)
+            <h5><a class="text-primary" href="/category/{{ $category->id }}">{{ $category->title }}</a></h5>
+            <span class="my-0">by {{ $category->user->name }}</span>
+            <p>{{ $category->created_at->format('F j, Y') }} at {{ $category->created_at->format('H:i A') }}
+                <span class="float-right">
+                    <a href="/categories/{{$category->id}}/edit" class="btn btn-primary btn-sm mr-3">Edit Category</a>
+                    <a onclick="
+                        var result = confirm('Delete this category?');
+                        if(result) {
+                        event.preventDefault();
+                        document.getElementById('delete-category').submit();
+                        }" class="btn btn-danger btn-sm text-white"
+                        >Delete Category
+                    </a>
+                    <form action="{{ route('categories.destroy', [$category->id]) }}" id="delete-category" method="post" style="display: none;">
+                        <input type="hidden" name="_method" value="Delete">
+                        {{ csrf_field() }}
+                    </form>
+                </span>
+            </p>
+            <hr>
         @endforeach
-        {!! $articles->links() !!}
+    </div>
+    <div class="col-md offset-md-2">
+       <h3>Links</h3>
+        <p><a href="/articles">To Articles</a></p>
     </div>
 
 @endsection

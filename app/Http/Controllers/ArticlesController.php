@@ -16,7 +16,7 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-        $articles = Article::latest()->paginate(5);
+        $articles = Article::latest()->paginate(10);
         $categories = Category::all();
         return view('articles.index', ['articles' => $articles, 'categories' => $categories]);
     }
