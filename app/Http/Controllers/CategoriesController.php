@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Auth;
 
 class CategoriesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -62,7 +67,9 @@ class CategoriesController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        $category = Category::find($category->id);
+
+        return view('categories.edit', ['category' => $category]);
     }
 
     /**
@@ -74,7 +81,13 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $categoryUpdate = Category::where('id', $category->id)->update([
+            'title' => $request->title,
+        ]);
+
+        if($categoryUpdate) {
+            return redirect()->route('categories.index')->with('info', 'Category updated successfully');;
+        }
     }
 
     /**

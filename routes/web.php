@@ -11,17 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
-/*Route::middleware(['auth'])->group(function() {
-
-});*/
+Route::get('/', 'PagesController@getHome')->name('home');
+Route::get('/contact', 'PagesController@getContact')->name('contact');
 
 Route::resources([
     'categories' => 'CategoriesController',

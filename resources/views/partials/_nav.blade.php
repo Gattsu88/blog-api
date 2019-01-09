@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-md navbar-dark navbar-laravel bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark">
     <div class="container">
-        <a href="#"><i class="far fa-newspaper"></i> Blog-Api</a>
+        <a href="{{ route('home') }}" class="text-danger" style="text-decoration: none;"><i class="far fa-newspaper"></i> Blog-Api</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -8,7 +8,9 @@
         <div class="collapse navbar-collapse ml-10" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto ml-4">
-                <li class="nav-item active"><a class="nav-link" href="{{ route('articles.index') }}">Articles</a></li>
+                <li class="nav-item active ml-2"><a class="nav-link text-danger" href="{{ route('home') }}">Home</a></li>
+                <li class="nav-item active ml-2"><a class="nav-link text-danger" href="{{ route('articles.index') }}">Articles</a></li>
+                <li class="nav-item active ml-2"><a class="nav-link text-danger" href="{{ route('contact') }}">Contact</a></li>
             </ul>
 
             <!-- Right Side Of Navbar -->

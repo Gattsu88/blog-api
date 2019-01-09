@@ -6,14 +6,12 @@
         <ul class="list-unstyled">
         @foreach($categories as $category)
             <li>
-                <i class="fas fa-caret-right"></i>
-                <a href="{{ url('categories', $category->id) }}">
+                <span class="badge badge-pill badge-dark pull-right">{{ $category->articles->count() }}</span>
+                <a class="text-dark" href="{{ url('categories', $category->id) }}">
                     @if(url()->current() == url('categories', $category->id))
-                        <b>{{ $category->title }}
-                        <span class="badge pull-right">({{ $category->articles->count() }})</span></b>
+                        <strong>{{ $category->title }}</strong>
                     @else
                         {{ $category->title }}
-                        <span class="badge pull-right">({{ $category->articles->count() }})</span>
                     @endif
                 </a>
             </li>
@@ -22,24 +20,24 @@
     </div>
 
     <div class="col-sm-12 col-md-6 col-lg-6 offset-md-1">
-        <h1>{{ $category->title }}</h1><hr>
+        <h2>Articles in this category</h2><hr>
         @foreach ($articles as $article)
-            <h3><a class="text-primary" href="/articles/{{ $article->id }}">{{ $article->title }}</a></h3>
-            <p class="my-0">by {{ $article->user->name }}</p>
+            <h2><a class="text-dark" href="/articles/{{ $article->id }}">{{ $article->title }}</a></h2>
+            <p class="my-0">by <a class="lead text-dark" href="#">{{ $article->user->name }}</a></p>
             <p>{{ $article->created_at->format('F j, Y') }} at {{ $article->created_at->format('H:i A') }}</p>
             <p class="lead">
                 {{ str_limit(strip_tags($article->body), 200) }}
                 @if(strlen(strip_tags($article->body)) > 200)
-                    <br><a href="/articles/{{ $article->id }}" class="text-info">Read more >></a>
+                    <br><a href="/articles/{{ $article->id }}" class="text-danger">Read more >></a>
                 @endif
             </p><hr>
         @endforeach
         {{ $articles->links() }}
     </div>
 
-    <div class="col-sm-12 col-md-2 col-lg-2 px-0 offset-md-1">
+    <div class="col-sm-12 col-md-2 col-lg-2 px-3 offset-md-1">
         <h3>Blog Tools</h3>
-        <p><a href="/articles/create" class="btn btn-success btn-block text-light">Create article</a></p>
-        <p><a href="/categories" class="btn btn-primary btn-block btn-sm text-light">Manage categories</a></p>
+        <p><a href="/articles/create" class="btn text-success bg-dark">Create article</a></p>
+        <p><a href="/categories" class="btn btn-sm text-primary bg-dark">Manage categories</a></p>
     </div>
 @endsection

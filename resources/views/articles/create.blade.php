@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-            <div class="col-md-8 col-lg-8">
+            <div class="col-md-7 col-lg-7">
 
                 @include('partials._flash')
 
@@ -31,6 +31,10 @@
                       <input type="submit" value="Create Article" class="btn btn-success btn-block">
                     </div>
                 </form>
+            </div>
+            <div class="col-md-2 col-lg-2 offset-md-3">
+               <h3>Links</h3>
+                <p><a href="/articles" class="btn btn-sm text-warning bg-dark"><< To Articles</a></p>
             </div>
 
 

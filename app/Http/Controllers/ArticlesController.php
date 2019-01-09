@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Auth;
 
 class ArticlesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -91,7 +96,14 @@ class ArticlesController extends Controller
      */
     public function update(Request $request, Article $article)
     {
+        $articleUpdate = Article::where('id', $article->id)->update([
+            'title' => $request->title,
+            'body' => $request->body,
+        ]);
 
+        if($articleUpdate) {
+            return redirect()->route('articles.show', ['article' => $article->id])->with('info', 'Article updated successfully');;
+        }
     }
 
     /**
