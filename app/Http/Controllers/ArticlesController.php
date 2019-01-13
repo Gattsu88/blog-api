@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Article;
+use App\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -69,8 +70,9 @@ class ArticlesController extends Controller
     public function show(Article $article)
     {
         $article = Article::find($article->id);
+        $articleComments = $article->comments()->orderBy('created_at', 'desc')->get();
 
-        return view('articles.show', ['article' => $article]);
+        return view('articles.show', ['article' => $article, 'articleComments' => $articleComments]);
     }
 
     /**

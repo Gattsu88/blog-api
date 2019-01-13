@@ -31,7 +31,7 @@
     <div class="col-md offset-md-2">
         <h3>Links</h3>
         <p><a href="/categories/create" class="btn text-success bg-dark">New Category</a></p>
-        <p><a href="/articles/" class="btn btn-sm text-warning bg-dark"><< To Articles</a></p>
+        <p><a href="/articles/" class="btn btn-sm text-warning bg-dark"><i class="fas fa-hand-point-left"></i> To Articles</a></p>
     </div>
 
 @endsection

@@ -38,6 +38,6 @@
     <div class="col-sm-12 col-md-2 col-lg-2 px-3 offset-md-1">
         <h3>Blog Tools</h3>
         <p><a href="/articles/create" class="btn text-success bg-dark">Create article</a></p>
-        <p><a href="/categories" class="btn btn-sm text-primary bg-dark">Manage categories</a></p>
+        <p><a href="/categories" class="btn btn-sm text-primary bg-dark"><i class="fas fa-edit"></i> Manage categories</a></p>
     </div>
 @endsection

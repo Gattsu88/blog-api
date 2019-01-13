@@ -30,13 +30,13 @@
             </div>
 
             <div class="form-group">
-              <input type="submit" value="Update Article" class="btn btn-info btn-block">
+              <input type="submit" value="Update Article" class="btn btn-dark text-primary btn-block">
             </div>
         </form>
     </div>
     <div class="col-md offset-md-3">
         <h3>Links</h3>
-        <p><a href="/articles/{{ $article->id }}" class="btn btn-sm text-warning bg-dark"><< To Article</a></p>
+        <p><a href="/articles/{{ $article->id }}" class="btn btn-sm text-warning bg-dark"><i class="fas fa-hand-point-left"></i> To Article</a></p>
     </div>
 
 @endsection

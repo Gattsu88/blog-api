@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-    <div class="col-md-4 col-lg-4" style="height: 100vh;">
+    <div class="col-md-4 col-lg-4">
 
         @include('partials._flash')
 
@@ -16,13 +16,13 @@
             </div>
 
             <div class="form-group">
-              <input type="submit" value="Update Category" class="btn btn-info btn-block">
+              <input type="submit" value="Update Category" class="btn btn-dark text-primary btn-block">
             </div>
         </form>
     </div>
-    <div class="col-md offset-md-4">
+    <div class="col-md-2 col-lg-2 offset-md-5">
         <h3>Links</h3>
-        <p><a href="/categories" class="btn btn-outline-warning btn-sm"><< To Categories</a></p>
+        <p><a href="/categories" class="btn btn-outline-warning btn-sm bg-dark"><i class="fas fa-hand-point-left"></i> To Categories</a></p>
     </div>
 
 @endsection

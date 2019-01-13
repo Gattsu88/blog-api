@@ -4,7 +4,19 @@ body {
     color: #111 !important;
     font-size: 16px;
     font-family: 'ZCOOL KuaiLe', cursive;
-    font-style: italic;
+}
+
+.indent {
+    text-indent: 20px;
+}
+
+#big:first-letter {
+    float: left;
+    font-size: 45px;
+    line-height: 1;
+    font-weight: bold;
+    margin-right: 9px;
+    color: darkred;
 }
 
 .navbar {
@@ -30,6 +42,9 @@ footer {
     background-color: #111;
     color: #680587;
     border-top: 1px solid #680587;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
 .comment {
@@ -96,11 +111,6 @@ footer {
     background: #ccc;
 }
 
-.comment:hover {
-    /*  cursor: url('../images/FB_CUR.cur');  See the result on http://lab.web-gate.fr/timeline/ */
-    cursor: cell; /* This line is for the cursor */
-}
-
 .comment:hover:before { background: #3b5998 }
 
 .comment .text:before {
@@ -116,4 +126,11 @@ footer {
     -moz-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     -o-transform: rotate(45deg);
+}
+
+#contact-form {
+    background-color: #9b0a0a;
+    padding: 15px;
+    border-radius: 10px 5px;
+    color: white;
 }

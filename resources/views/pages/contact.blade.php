@@ -9,7 +9,7 @@
 
         <h3>Contact Us</h3>
 
-        <form action="" method="post">
+        <form action="" method="post" id="contact-form">
             {{ csrf_field() }}
 
             <div class="form-group">
@@ -29,7 +29,7 @@
 
 
             <div class="form-group">
-              <input type="submit" value="Send Message" class="btn btn-success btn-block">
+              <input type="submit" value="Send Message" class="btn btn-dark text-primary btn-block">
             </div>
         </form>
     </div>

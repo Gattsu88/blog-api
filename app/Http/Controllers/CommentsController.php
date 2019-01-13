@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentsController extends Controller
 {
@@ -14,8 +15,8 @@ class CommentsController extends Controller
      */
     public function index()
     {
-        $comments = Comments::all();
-        return view('comments.index', ['comments' => $comments]);
+        /*$comments = Comments::latest();
+        return view('comments.index', ['comments' => $comments]);*/
     }
 
     /**
@@ -36,7 +37,19 @@ class CommentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(Auth::check()) {
+            $comment = Comment::create([
+                'title' => $request->title,
+                'body' => $request->body,
+                'article_id' => $request->article_id,
+                'user_id' => Auth::user()->id
+            ]);
+
+            if($comment) {
+                return back()->withInput()->with('success', 'Comment created successfully');
+            }
+        }
+        return back()->withInput()->with('error', 'You must be logged in');
     }
 
     /**
@@ -47,7 +60,9 @@ class CommentsController extends Controller
      */
     public function show(Comment $comment)
     {
-        //
+        $comment = Comment::find($comment->id);
+
+        return view('comments.show', ['comment' => $comment]);
     }
 
     /**
@@ -58,7 +73,9 @@ class CommentsController extends Controller
      */
     public function edit(Comment $comment)
     {
-        //
+        $comment = Comment::find($comment->id);
+
+        return view('comments.edit', ['comment' => $comment]);
     }
 
     /**
@@ -70,7 +87,14 @@ class CommentsController extends Controller
      */
     public function update(Request $request, Comment $comment)
     {
-        //
+        $commentUpdate = Comment::where('id', $comment->id)->update([
+            'title' => $request->title,
+            'body' => $request->body,
+        ]);
+
+        if($commentUpdate) {
+            return back()->withInput()->with('info', 'Comment updated successfully');;
+        }
     }
 
     /**
@@ -81,6 +105,11 @@ class CommentsController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        //
+        $findComment = Comment::find($comment->id);
+
+        if($findComment->delete()) {
+            return back()->withInput()->with('success', 'Comment deleted successfully');
+        }
+        return back()->withInput()->with('error', 'Comment could not be deleted');
     }
 }

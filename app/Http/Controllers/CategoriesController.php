@@ -32,7 +32,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('categories.create');
     }
 
     /**
@@ -43,7 +43,17 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(Auth::check()) {
+            $category = Category::create([
+                'title' => $request->title,
+                'user_id' => Auth::user()->id
+            ]);
+
+            if($category) {
+                return redirect()->route('categories.index')->with('success', 'Category created successfully');
+            }
+        }
+        return back()->withInput()->with('error', 'You must be logged in');
     }
 
     /**
@@ -82,7 +92,7 @@ class CategoriesController extends Controller
     public function update(Request $request, Category $category)
     {
         $categoryUpdate = Category::where('id', $category->id)->update([
-            'title' => $request->title,
+            'title' => $request->title
         ]);
 
         if($categoryUpdate) {
