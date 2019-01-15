@@ -25,7 +25,7 @@
         <h2>All Articles</h2><hr>
         @foreach ($articles as $article)
             <h2><a class="text-dark" href="/articles/{{ $article->id }}">{{ $article->title }}</a></h2>
-            <p class="my-0">by <a class="lead text-dark" href="#">{{ $article->user->name }}</a></p>
+            <p class="my-0">by <a class="lead text-dark" href="#">{{ $article->user['name'] }}</a></p>
             <p>{{ $article->created_at->format('F j, Y') }} at {{ $article->created_at->format('H:i') }}</p>
             <p class="lead">
                 {{ str_limit(strip_tags($article->body), 200) }}

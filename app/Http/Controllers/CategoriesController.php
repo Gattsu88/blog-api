@@ -46,7 +46,7 @@ class CategoriesController extends Controller
         if(Auth::check()) {
             $category = Category::create([
                 'title' => $request->title,
-                'user_id' => Auth::user()->id
+                'user_id' => Auth::id()
             ]);
 
             if($category) {

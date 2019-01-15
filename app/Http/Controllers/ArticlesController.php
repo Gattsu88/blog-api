@@ -7,6 +7,7 @@ use App\Article;
 use App\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class ArticlesController extends Controller
 {
@@ -47,12 +48,24 @@ class ArticlesController extends Controller
     public function store(Request $request)
     {
         if(Auth::check()) {
-            $article = Article::create([
-                'title' => $request->title,
-                'body' => $request->body,
-                'category_id' => $request->category_id,
-                'user_id' => Auth::user()->id
+            $validator = Validator::make($request->all(), [
+                'title' => 'required|min:10|max:200',
+                'body' => 'required|min:10|max:2000',
+                'category_id' => 'required|integer'
             ]);
+
+            if ($validator->fails()) {;
+                return back()->withInput()->with('error', $validator->messages()->first());
+            }
+
+            $article = new Article;
+
+            $article->title = $request->title;
+            $article->body = $request->body;
+            $article->category_id = $request->category_id;
+            $article->user_id = Auth::id();
+
+            $article->save();
 
             if($article) {
                 return redirect()->route('articles.index')->with('success', 'Article created successfully');

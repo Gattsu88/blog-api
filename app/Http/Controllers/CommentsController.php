@@ -42,7 +42,7 @@ class CommentsController extends Controller
                 'title' => $request->title,
                 'body' => $request->body,
                 'article_id' => $request->article_id,
-                'user_id' => Auth::user()->id
+                'user_id' => Auth::id()
             ]);
 
             if($comment) {

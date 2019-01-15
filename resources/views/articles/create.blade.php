@@ -10,16 +10,16 @@
 
             <div class="form-group">
               <label for="article-title">Title:</label>
-              <input type="text" class="form-control" name="title" id="article-title" placeholder="Enter title.." required>
+              <input type="text" class="form-control" name="title" id="article-title" placeholder="Enter title..">
             </div>
 
             <div class="form-group">
               <label for="article-body">Description:</label>
-              <textarea rows="5" class="form-control" name="body" id="article-body" placeholder="Enter description.." required></textarea>
+              <textarea rows="5" class="form-control" name="body" id="article-body" placeholder="Enter description.."></textarea>
             </div>
 
             <div class="form-group">
-                <select class="form-control" id="article-category" name="category_id" required>
+                <select class="form-control" id="article-category" name="category_id">
                     <option value="" selected>Choose category:</option>
                     @foreach($categories as $category)
                         <option value="{{ $category->id }}">{{ $category->title }}</option>
