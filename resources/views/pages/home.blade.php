@@ -16,28 +16,31 @@
         </ul>
         <p class="indent">Vivamus non interdum ipsum, non suscipit massa. Mauris id arcu vitae purus ornare dapibus sit amet vel nunc. Donec eleifend nunc augue, nec aliquam erat pulvinar non. Morbi ut dui porttitor, dictum mi fermentum, aliquam velit. Cras lobortis orci laoreet ligula euismod rutrum. Quisque semper rutrum quam vitae blandit. Etiam vel sagittis justo, sagittis viverra odio. Donec bibendum arcu et risus volutpat suscipit. Quisque aliquet augue lorem, feugiat malesuada neque lacinia nec.</p>
     </div>
-    <div class="col-md-3 col-lg-3 offset-md-2">
+
+    <div class="col-md-4 col-lg-4 offset-md-1">
         <div class="row p-3">
-            <h2>API links</h2>
-            <p>-- In progress --</p>
+            <div class="card">
+                <div class="card-header">
+                    <h4>API links --In progress--</h4>
+                </div>
+                <ul class="list-group list-group-flush list-unstyled" style="padding: 10px;">
+                    <li class="my-1"><a href="">API 1</a></li>
+                    <li class="my-1"><a href="">API 2</a></li>
+                </ul>
+            </div>
         </div>
 
         <div class="row p-3">
-            <h2>Newest articles</h2>
-            <ul class="list-unstyled">
-                @foreach($latestArticles as $article)
-                    <li class="my-1">* <a id="homeArticle" href="/articles/{{ $article->id }}">{{ $article->title }}</a></li>
-                @endforeach
-            </ul>
-        </div>
-
-        <div class="row p-3">
-            <h2>Newest comments</h2>
-            <ul class="list-unstyled">
-                @foreach($latestComments as $comment)
-                    {{--<li class="my-1"><a id="homeComment" href="/comments/{{ $comment->id }}">{{ $comment->title }}</a></li>--}}
-                @endforeach
-            </ul>
+            <div class="card">
+                <div class="card-header">
+                    <h4>Newest articles</h4>
+                </div>
+                <ul class="list-group list-group-flush list-unstyled" style="padding: 10px;">
+                    @foreach($latestArticles as $article)
+                        <li class="my-1">* <a id="homeArticle" href="/articles/{{ $article->id }}">{{ $article->title }}<br><span style="font-size: 10px; margin: 0px; float: right;">{{ $article->created_at }}</span></a></li>
+                    @endforeach
+                </ul>
+            </div>
         </div>
     </div>
 @endsection

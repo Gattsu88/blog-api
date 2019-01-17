@@ -5,17 +5,21 @@
 @section('content')
 
     <div class="col-sm-12 col-md-2 col-lg-2 px-md-0">
-        <h3>Categories</h3>
-        <ul class="list-unstyled">
-        @foreach($categories as $category)
-            <li>
-                <span class="badge badge-pill badge-dark pull-right"> {{ $category->articles->count() }}</span>
-                <a class="text-dark" href="/categories/{{ $category->id }}">
-                    {{ $category->title }}
-                </a>
-            </li>
-        @endforeach
-        </ul>
+       <div class="card" style="width: 200px;">
+            <div class="card-header">
+                <h4>Categories</h4>
+            </div>
+            <ul class="list-group list-group-flush list-unstyled" style="padding: 10px;">
+                @foreach($categories as $category)
+                    <li>
+                        <span class="badge badge-pill badge-dark pull-right"> {{ $category->articles->count() }}</span>
+                        <a class="text-dark" href="/categories/{{ $category->id }}">
+                            {{ $category->title }}
+                        </a>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
     </div>
 
     <div class="col-sm-12 col-md-6 col-lg-6 offset-md-1">
@@ -24,7 +28,7 @@
 
         <h2>All Articles</h2><hr>
         @foreach ($articles as $article)
-            <h2><a class="text-dark" href="/articles/{{ $article->id }}">{{ $article->title }}</a></h2>
+        <h3><a style="color: #eb5352;" href="/articles/{{ $article->id }}">{{ $article->title }}</a></h3>
             <p class="my-0">by <a class="lead text-dark" href="#">{{ $article->user['name'] }}</a></p>
             <p>{{ $article->created_at->format('F j, Y') }} at {{ $article->created_at->format('H:i') }}</p>
             <p class="lead">

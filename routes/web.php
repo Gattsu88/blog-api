@@ -21,5 +21,6 @@ Route::get('/contact', 'PagesController@getContact')->name('contact');
 Route::resources([
     'categories' => 'CategoriesController',
     'articles' => 'ArticlesController',
-    'comments' => 'CommentsController'
+    'comments' => 'CommentsController',
+    'contact' => 'ContactController'
 ]);

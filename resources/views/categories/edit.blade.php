@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-    <div class="col-md-4 col-lg-4">
+    <div class="col-md-4 col-lg-4" style="height: 80vh;">
 
         @include('partials._flash')
 
