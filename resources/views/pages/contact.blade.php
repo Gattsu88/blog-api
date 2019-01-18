@@ -3,11 +3,11 @@
 @section('title', '| Contact')
 
 @section('content')
-    <div class="col-sm-12 col-md-8 col-lg-5 offset-md-3" style="height: 90vh;">
+    <div class="col-sm-12 col-md-8 col-lg-5 offset-md-3">
 
         @include('partials._flash')
 
-        <h3>Contact Us</h3>
+        <h3>Contact Us</h3><br>
 
         <form action="{{ route('contact.store') }}" method="post" id="contact-form">
             {{ csrf_field() }}

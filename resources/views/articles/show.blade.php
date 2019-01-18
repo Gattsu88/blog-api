@@ -1,15 +1,14 @@
 @extends('layouts.app')
+
 @section('content')
 
-    <div class="col-md-7 col-lg-7" style="min-height: 300px;">
+    <div class="col-md-7 col-lg-7">
 
         @include('partials._flash')
 
         <h2>{{ $article->title }}</h2>
         <p class="my-0">by <a class="text-dark lead" href="#">{{ $article->user->name }}</a></p>
         <p>{{ $article->created_at->format('M j, Y') }} at {{ $article->created_at->format('H:i') }}</p>
-        <p class="lead">{{ $article->body }}</p>
-
         @if(Auth::user() && Auth::id() == $article->user->id)
 
             <a href="/articles/{{$article->id}}/edit" class="btn btn-sm text-primary bg-dark">Edit Article</a>
@@ -25,13 +24,14 @@
                 {{ csrf_field() }}
             </form>
         @endif
+        <p class="lead">{{ $article->body }}</p>
         <hr>
 
         <div class="row">
-            <div class="col-md-10 col-lg-10 offset-md-2">
+            <div class="col-md-12 col-lg-12">
 
                 @if(Auth::user())
-                    <h4>Leave your comment..</h4><hr>
+                    <h4>Leave your comment..</h4>
                     <form action="{{ route('comments.store') }}" method="post">
                         {{ csrf_field() }}
 

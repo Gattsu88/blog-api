@@ -1,12 +1,14 @@
 @extends('layouts.app')
 @section('content')
 
-    <div class="col-md-7 col-lg-7" style="height: 100vh;">
+    <div class="col-md-7 col-lg-7" style="height: 90vh;">
 
         @include('partials._flash')
 
-        <form action="{{ route('articles.update', [$article->id]) }}" method="post">
+        <form action="{{ route('articles.update', [$article->id]) }}" method="post" id="article-edit">
             {{ csrf_field() }}
+
+            <h3 class="text-white">Edit article</h3>
 
             <input type="hidden" name="_method" value="put">
 

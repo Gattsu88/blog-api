@@ -5,8 +5,10 @@
 
         @include('partials._flash')
 
-        <form action="{{ route('articles.store') }}" method="post">
+        <form action="{{ route('articles.store') }}" method="post" id="article-create">
             {{ csrf_field() }}
+
+            <h3 class="text-white">Create article</h3>
 
             <div class="form-group">
               <label for="article-title">Title:</label>

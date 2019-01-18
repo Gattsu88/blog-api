@@ -39,7 +39,7 @@ class ContactController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|min:5|max:50',
             'email' => 'required|email',
-            'message' => 'required|integer'
+            'message' => 'required'
         ]);
 
         if ($validator->fails()) {;
@@ -52,20 +52,11 @@ class ContactController extends Controller
         $contact->email = $request->email;
         $contact->message = $request->message;
 
-        $article->save();
+        $contact->save();
 
         if($contact) {
-            return redirect()->route('articles.index')->with('success', 'Article created successfully');
+            return back()->with('success', 'Thanks for contacting us!');
         }
-        $this->validate($request, [
-        'name' => 'required',
-        'email' => 'required|email',
-        'message' => 'required'
-        ]);
-
-        Contact::create($request->all());
-
-        return back()->with('success', 'Thanks for contacting us!');
     }
 
     /**

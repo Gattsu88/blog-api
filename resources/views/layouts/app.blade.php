@@ -4,11 +4,11 @@
 @include('partials._head')
 
 <body>
-    <div id="app">
+    <div id="app" style="height: 90vh;">
         @include('partials._nav')
 
         <main class="py-4">
-            <div class="container">
+            <div class="container my-4">
                 <div class="row">
                     @yield('content')
                 </div>

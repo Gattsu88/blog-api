@@ -136,3 +136,18 @@ footer {
     border-radius: 10px 5px;
     color: white;
 }
+
+#article-create {
+    border: 1px solid #eb5352;
+    background-color: #206a83;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+#article-edit {
+    border: 1px solid #eb5352;
+    background-color: #206a83;
+    padding: 20px;
+    border-radius: 5px;
+}
+
